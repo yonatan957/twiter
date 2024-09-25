@@ -1,4 +1,5 @@
 import exp,{Router,Request,Response} from 'express'
+import postService from '../services/postService'
 
 
 
@@ -23,6 +24,7 @@ router.get('/', async (req:Request,res:Response):Promise<void> =>{
 
 router.post('/', async (req:Request,res:Response):Promise<void> =>{
     try{
+        postService.createNewUser(req.body)
         res.json({
             err: false,
             message: 'Login Successful',  

@@ -13,14 +13,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const userService_1 = __importDefault(require("../services/userService"));
 const router = express_1.default.Router();
 router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        res.json({
-            err: false,
-            message: 'Login Successful',
-            data: undefined
-        });
+        const result = yield userService_1.default.createNewUser(req.body);
+        if (result) {
+            res.json({
+                err: false,
+                message: 'Login Successful',
+                data: undefined
+            });
+        }
+        else {
+            throw new Error("can't save new user to the file");
+        }
     }
     catch (arr) {
         res.status(404).json({
