@@ -1,73 +1,94 @@
-import exp, { Request, Response, Router } from 'express'
+import exp,{Router,Request,Response} from 'express'
+
+
+
 const router:Router = exp.Router()
 
-//query params: ?title=x&date=
-router.get('/search', async (req:Request, res:Response):Promise<void>=> {
-    try {
-        res.status(200).json({
-            error:true,
-            massage: "sucsses",
-            data:null
-        })
-    } catch (error:any) {
-        res.status(400).json({
-            error:true,
-            massage: error.massage,
-            data:null
+router.get('/', async (req:Request,res:Response):Promise<void> =>{
+    try{
+        res.json({
+            err: false,
+            message: 'Login Successful',  
+            data:undefined 
         })
     }
+    catch(arr){
+        res.status(404).json({
+            err: true,
+            message: 'Invalid',
+            data: null
+        })
+    } 
 })
 
-//get all posts
-router.get('/', async (req:Request, res:Response):Promise<void>=> {
-    try {
-        res.status(200).json({
-            error:true,
-            massage: "sucsses",
-            data:null
-        })
-    } catch (error:any) {
-        res.status(400).json({
-            error:true,
-            massage: error.massage,
-            data:null
+router.post('/', async (req:Request,res:Response):Promise<void> =>{
+    try{
+        res.json({
+            err: false,
+            message: 'Login Successful',  
+            data:undefined 
         })
     }
+    catch(arr){
+        res.status(404).json({
+            err: true,
+            message: 'Invalid',
+            data: null
+        })
+    } 
 })
 
-//get post by id
-router.get('/:id', async (req:Request, res:Response):Promise<void>=> {
-    try {
-        res.status(200).json({
-            error:true,
-            massage: "sucsses",
-            data:null
-        })
-    } catch (error:any) {
-        res.status(400).json({
-            error:true,
-            massage: error.massage,
-            data:null
+//?title=x&date=23/04/2015
+router.get('/search', async (req:Request,res:Response):Promise<void> =>{
+    try{
+        res.json({
+            err: false,
+            message: 'Login Successful',  
+            data:undefined 
         })
     }
+    catch(arr){
+        res.status(404).json({
+            err: true,
+            message: 'Invalid',
+            data: null
+        })
+    } 
 })
 
-// post a post
-router.post('/', async (req:Request, res:Response):Promise<void>=> {
-    try {
-        res.status(200).json({
-            error:true,
-            massage: "sucsses",
-            data:null
-        })
-    } catch (error:any) {
-        res.status(400).json({
-            error:true,
-            massage: error.massage,
-            data:null
+router.get('/:id', async (req:Request,res:Response):Promise<void> =>{
+    try{
+        res.json({
+            err: false,
+            message: 'Login Successful',  
+            data:undefined 
         })
     }
+    catch(arr){
+        res.status(404).json({
+            err: true,
+            message: 'Invalid',
+            data: null
+        })
+    } 
 })
 
+//protected rout
+router.patch('/like/:id', async (req:Request,res:Response):Promise<void> =>{
+    try{
+        res.json({
+            err: false,
+            message: 'Login Successful',  
+            data:undefined 
+        })
+    }
+    catch(arr){
+        res.status(404).json({
+            err: true,
+            message: 'Invalid',
+            data: null
+        })
+    } 
+})
 
 export default router

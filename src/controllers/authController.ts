@@ -1,6 +1,7 @@
 import exp, { Router, Request, Response } from 'express';
 const router:Router = exp.Router();
 
+
 router.post('/login', async (req:Request, res:Response):Promise<void>=> {
     try {
         res.status(200).json({
@@ -17,6 +18,7 @@ router.post('/login', async (req:Request, res:Response):Promise<void>=> {
     }
 })
 
+//protected rout
 router.post('/logout', async (req:Request, res:Response):Promise<void>=> {
     try {
         res.status(200).json({
