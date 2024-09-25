@@ -15,86 +15,91 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const postService_1 = __importDefault(require("../services/postService"));
 const router = express_1.default.Router();
-router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const posts = yield postService_1.default.getAllPost();
+        console.log(posts);
         res.json({
             err: false,
-            message: 'Login Successful',
-            data: undefined
+            message: "Login Successful",
+            data: posts,
         });
     }
     catch (arr) {
         res.status(404).json({
             err: true,
-            message: 'Invalid',
-            data: null
+            message: "Invalid",
+            data: null,
         });
     }
 }));
-router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        postService_1.default.createNewUser(req.body);
+        postService_1.default.createNewPost(req.body);
         res.json({
             err: false,
-            message: 'Login Successful',
-            data: undefined
+            message: "Login Successful",
+            data: undefined,
         });
     }
     catch (arr) {
         res.status(404).json({
             err: true,
-            message: 'Invalid',
-            data: null
+            message: "Invalid",
+            data: null,
         });
     }
 }));
 //?title=x&date=23/04/2015
-router.get('/search', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/search", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     try {
+        const titleSearch = (_a = req.query.title) === null || _a === void 0 ? void 0 : _a.toString();
+        const posts = yield postService_1.default.getPostByWord(titleSearch);
         res.json({
             err: false,
-            message: 'Login Successful',
-            data: undefined
+            message: "Login Successful",
+            data: posts,
         });
     }
     catch (arr) {
         res.status(404).json({
             err: true,
-            message: 'Invalid',
-            data: null
+            message: "Invalid",
+            data: null,
         });
     }
 }));
-router.get('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.json({
             err: false,
-            message: 'Login Successful',
-            data: undefined
+            message: "Login Successful",
+            data: undefined,
         });
     }
     catch (arr) {
         res.status(404).json({
             err: true,
-            message: 'Invalid',
-            data: null
+            message: "Invalid",
+            data: null,
         });
     }
 }));
 //protected rout
-router.patch('/like/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.patch("/like/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.json({
             err: false,
-            message: 'Login Successful',
-            data: undefined
+            message: "Login Successful",
+            data: undefined,
         });
     }
     catch (arr) {
         res.status(404).json({
             err: true,
-            message: 'Invalid',
-            data: null
+            message: "Invalid",
+            data: null,
         });
     }
 }));
